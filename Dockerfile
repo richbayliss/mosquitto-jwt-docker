@@ -63,6 +63,7 @@ COPY mosquitto.conf /etc/mosquitto/mosquitto.conf
 COPY *.toml /etc/confd/conf.d/
 COPY *.tmpl /etc/confd/templates/
 COPY run.sh .
+COPY schema.sql /etc/mosquitto/
 
 RUN mkdir -p /etc/confd/templates/ && mkdir -p /etc/confd/conf.d/
 
