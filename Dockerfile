@@ -57,6 +57,7 @@ RUN adduser --shell /bin/false mosquitto && \
 
 COPY --from=builder /mosquitto/install/ /
 COPY --from=builder /mosquitto/mosquitto-auth-plug/auth-plug.so /usr/local/lib/
+COPY --from=builder /mosquitto/mosquitto-auth-plug/np /usr/local/bin/
 COPY --from=builder /confd/bin/confd /usr/local/bin/
 COPY mosquitto.conf /etc/mosquitto/mosquitto.conf
 COPY *.toml /etc/confd/conf.d/
