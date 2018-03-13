@@ -20,7 +20,7 @@ RUN make WITH_SRV:=no && \
     make install
 
 # build the auth plugin...
-RUN git clone https://github.com/jpmens/mosquitto-auth-plug.git && \
+RUN git clone https://github.com/richbayliss/mosquitto-auth-plug.git && \
     cd mosquitto-auth-plug && \
     git checkout tags/0.1.2
 
