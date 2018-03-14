@@ -1,1 +1,3 @@
 auth_plugin /usr/local/lib/mosquitto_auth_plugin_jwt.so
+
+auth_opt_jwt_token_secret {{ getenv "JWT_SECRET" }}

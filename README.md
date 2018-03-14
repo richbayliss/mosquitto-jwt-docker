@@ -1,13 +1,10 @@
-# mosquitto-mysql-docker
-Mosquitto MQTT server, with MySQL auth backend, running in Docker
+# mosquitto-jwt-docker
+Mosquitto MQTT server, with JWT auth backend, running in Docker
 
 # Why?
 MQTT is a great protocol for linking embedded microcontrollers to software on the web. Its publish/subscribe model works great for both 
 public channels of communications and for private ones. An Access Control List (ACL) is needed to restrict every other client 
-from being able to read the messages designated to others. By default, Mosquitto doesn't have this functionality; but luckily a project
-is available to create a plugin to provide this kind of authentication and ACL system.
-
-This project is an amalgamation of the Mosquitto and auth-plugin projects.
+from being able to read the messages designated to others. By default, Mosquitto doesn't have this functionality; this project aims to solve that.
 
 # Why Docker?
 Running containers is easy and reliable. I belive that the future of services is running inside a container so I set out to make sure 
@@ -20,17 +17,11 @@ Simply clone the repo onto your machine, then in the project directory run:
 
 # Running
 
-## Step 1: Create the MySQL database
-On your MySQL database, run the `scheme.sql`.
-
-## Step 2: Run the container
+## Step 1: Run the container
 ```bash
 $ docker run -it -d \
     --name mosquitto \
-    -e MYSQL_HOST={IP/DNS of MySQL server}
-    -e MYSQL_USER={username}
-    -e MYSQL_PASS={password}
-    -e MYSQL_DATABASE={name of database with the schema}
+    -e JWT_SECRET=mySecretHere
     mosquitto-server
 ```
 
