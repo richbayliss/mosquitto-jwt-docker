@@ -1,12 +1,1 @@
-auth_plugin /usr/local/lib/auth-plug.so
-auth_opt_backends mysql
-
-auth_opt_host {{ getenv "MYSQL_HOST" }}
-auth_opt_port {{ getenv "MYSQL_PORT" }}
-auth_opt_dbname {{ getenv "MYSQL_DATABASE" }}
-auth_opt_user {{ getenv "MYSQL_USER" }}
-auth_opt_pass {{ getenv "MYSQL_PASS" }}
-auth_opt_userquery SELECT pw FROM users WHERE username = '%s'
-auth_opt_superquery SELECT COUNT(*) FROM users WHERE username = '%s' AND super = 1
-auth_opt_aclquery SELECT topic FROM acls WHERE (username = '%s') AND (rw >= %d)
-auth_opt_anonusername {{ getenv "MQTT_ANON_USER" }}
+auth_plugin /usr/local/lib/mosquitto_auth_plugin_jwt.so
